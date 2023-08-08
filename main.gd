@@ -3,7 +3,7 @@ var yilan
 var ekran
 
 func _ready():
-	$label.text=str($yilan.get_child_count()-2)
+	$Panel/label.text=str($yilan.get_child_count()-2)
 	ekran = OS.get_window_size()
 	var x = load("res://snake.gd")
 	yilan = x.new()
@@ -23,7 +23,7 @@ func yilan_ciz():
 		var son = $yilan.get_child($yilan.get_child_count()-1).duplicate()
 		son.name = "body "+str($yilan.get_child_count())
 		$yilan.add_child(son)
-		$label.text=str($yilan.get_child_count()-2)
+		$Panel/label.text=str($yilan.get_child_count()-2)
 	for index in range(0,yilan.body.size()):
 		$yilan.get_child(index).rect_position = yilan.body[index]
 
@@ -40,7 +40,7 @@ func _input(event):
 func is_on_screen():
 	if (yilan.body[0].x<0 || yilan.body[0].x> ekran.x-yilan.width):
 		return true
-	elif (yilan.body[0].y<0 || yilan.body[0].y > ekran.y - yilan.width):
+	elif (yilan.body[0].y<0 || yilan.body[0].y > 600 - yilan.width):
 		return true
 	if(yilan.body.size()>=3):
 		for block in yilan.body.slice(1,yilan.body.size()):
@@ -50,8 +50,8 @@ func is_on_screen():
 
 func yeni_yer_bulma():
 	randomize()
-	var x = (randi()%20)*yilan.width
-	var y = (randi()%20)*yilan.width
+	var x = (randi()%15)*yilan.width
+	var y = (randi()%15)*yilan.width
 	return Vector2(x,y)
 
 func elma_getir():

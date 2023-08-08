@@ -7,7 +7,7 @@ var body2
 var elma = false
 
 func _init():
-	body = [Vector2(240,0),Vector2(200,0),Vector2(160,0),Vector2(120,0),Vector2(80,0),Vector2(40,0),Vector2(0,0)]
+	body = [Vector2(80,0),Vector2(40,0),Vector2(0,0)]
 	yon = Vector2(width,0)
 
 func move():
